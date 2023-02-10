@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js
+    "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script>
+        var idIm;
+
+        $(document).ready(function () {
+            $('.im').attr('draggable', true);
+            $('.im').on("dragstart", function (event) {
+                idIm = this.id;
+                event.originalEvent.dataTransfer.setData("text", event.target.id);
+            });
+
+
+            $(".im").on("dragleave", function (event) {
+                event.preventDefault();
+            })
+            $('#selectContent').on("drop", function (event) {
+                event.preventDefault();
+                sOriginal = event.originalEvent.dataTransfer.getData('text');
+                $("#" + idIm).appendTo(this);
+            })
+
+        })
+
+
+    </script>
+</head>
+
+<body>
+
+    <div class="cuerpo">
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="contentModal">
+
+                <div class="login" id="login">
+                    <a href="#" onclick="cambiarModal(true)">Register</a>
+                    <hr>
+                    <label for="email">Email</label>
+                    <input name="email" type="text" placeholder="email" id="emailL">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="password" id="passL">
+                    <input type="submit" value="login" onclick="logearUsuario()">
+
+                </div>
+
+                <div class="register" id="register">
+                    <a href="#" onclick="cambiarModal(false)">Login</a>
+                    <hr>
+
+                    <label for="name">Name</label>
+                    <input type="text" placeholder="name" id="nameR">
+                    <label for="email">Email</label>
+                    <input type="text" placeholder="email" id="emailR">
+                    <label for="contra">Password</label>
+                    <input type="password" placeholder="password" id="passR">
+                    <input type="submit" value="register" onclick="registrarUsuario()">
+
+                </div>
+                <div id="grafico">
+                    <div id="cabecera"><img src="" id="titulo" alt="grafico"></div>
+                    <hr>
+
+                    <canvas id="historial"></canvas>
+
+                    <div id="botonSalir" onclick="cerrarGrafico()">Salir</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="boton-atras">
+            <img onclick="atras()" src="Imagenes/flecha-izquierda.png" alt="atras">
+        </div>
+        <div id="wrap">
+            <div class="cajas">
+                <div id="content">
+                    <img id="im1" class="im" alt="BBVA" src="Imagenes/im1.png">
+                    <img id="im2" class="im" alt="CaixaBank" src="Imagenes/im2.png">
+                    <img id="im3" class="im" alt="CellNex" src="Imagenes/im3.png">
+                    <img id="im4" class="im" alt="Ferrovial" src="Imagenes/im4.png">
+                    <img id="im5" class="im" alt="Iberdrola" src="Imagenes/im5.png">
+                    <img id="im6" class="im" alt="Inditex" src="Imagenes/im6.png">
+                    <img id="im7" class="im" alt="Naturgy" src="Imagenes/im7.png">
+                    <img id="im8" class="im" alt="Repsol" src="Imagenes/im8.png">
+                    <img id="im9" class="im" alt="Santander" src="Imagenes/im9.png">
+                    <img id="im10" class="im" alt="Telefonica" src="Imagenes/im10.png">
+                </div>
+                <div class="content2">
+                    <div id="selectContent">
+
+                    </div>
+                </div>
+            </div>
+            <button id="guardar" onclick="cambiarPagina()">Mostrar</button>
+        </div>
+        <div id="wrap2">
+            <div id="resul">
+
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
